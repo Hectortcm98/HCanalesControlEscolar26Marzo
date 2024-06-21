@@ -1,0 +1,86 @@
+﻿@model ML.Alumno
+
+@{
+
+}
+
+<div style="text-align: center;">
+    <h2>Datos del Alumno</h2>
+</div>
+
+
+<style>
+    body {
+        background-color: #89BCB0; /* Color de fondo deseado */
+    }
+</style>
+
+
+<div style="text-align: right;">
+    <a href="@Url.Action("GetAllAlumnos", "AlumnoController1")" float-right" id="btnRegresar">
+        <img src="~/lib/img/devolver.png" style="width: 45px; height: 45px;" />
+    </a>
+</div>
+
+@using (Html.BeginForm("Form", "AlumnoController1", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.IdAlumno)
+
+
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex-basis: 33.33%; padding: 5px;">
+
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <label style="text-align: center;">
+                        @Html.LabelFor(model => model.Nombre)
+                    </label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Nombre)
+                </div>
+            </div>
+
+           
+        </div>
+
+        <div style="flex-basis: 33.33%; padding: 5px;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <label style="text-align: center;">
+                        @Html.LabelFor(model => model.ApellidoPaterno)
+                    </label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.ApellidoPaterno)
+                </div>
+            </div>
+
+
+        </div>
+
+        <div style="flex-basis: 33.33%; padding: 5px;">
+           
+
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <label style="text-align: center;">
+                        @Html.LabelFor(model => model.ApellidoMaterno)
+                    </label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.ApellidoMaterno)
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+       
+
+    <div style="text-align: center; margin-top: 20px;">
+
+        <button type="submit" style="padding: 5px 60px; font-size: 16px;">Save</button>
+    </div>
+}

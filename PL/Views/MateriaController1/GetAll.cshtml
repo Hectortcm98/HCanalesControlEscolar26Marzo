@@ -1,0 +1,61 @@
+﻿@model ML.Materia
+@{
+
+
+}
+<style>
+    body {
+        background-color: #89BCB0; /* Color de fondo deseado */
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<h2>Materias</h2>
+
+<div class="row offset-md-8">
+    <div class="col-md-7">
+        <input type="text" class="form-control" placeholder="Agregar nueva Materia " readonly>
+    </div>
+    <div class="col-md-2">
+        <a href="@Url.Action("Form", "MateriaController1")">
+            <img src="~/lib/img/signo-de-mas.png" style="width: 30px; height: 30px;" />
+        </a>
+    </div>
+</div>
+<br />
+
+<table class="table table- table-hover table-bordered border border-primary  border-3">
+
+    <thead class="table-secondary">
+        <tr class="text-center">
+
+            <th></th>
+            <th>IdMateria</th>
+            <th>NombreMateria</th>
+            <th>Costo</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Materia materia in Model.MateriaList)
+        {
+            <tr class="text-center">
+                <td>
+                    <a class="btn btn-secondary" style="background-color: #FFFFFF;" href="@Url.Action("Form", "MateriaController1" , new { idMateria = materia.IdMateria}) "> <img src="~/lib/img/editar.png" alt="Eliminar" style="width: 30px; height: 30px;" /></a>
+                </td>
+                <td>@materia.IdMateria</td>
+                <td>@materia.NombreMateria</td>
+                <td>@materia.Costo</td>
+                <td>
+                    <a class="btn btn-primary" style="background-color: #FFFFFF;" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');"
+                       href="@Url.Action("Delete", "MateriaController1", new { IdMateria = materia.IdMateria})"><img src="~/lib/img/eliminar.png" alt="Eliminar" style="width: 30px; height: 30px;" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
